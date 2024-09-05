@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Tasks by {{ user.username }}{% endblock %}
+{% block content %}
+    <h1>Tasks by {{ user.username }}</h1>
+    {% for task in tasks %}
+        <div class="task">
+            <h2><a href="{{ url_for('main.task', task_id=task.id) }}">{{ task.title }}</a></h2>
+            <p>{{ task.content }}</p>
+            <small>Posted on {{ task.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+    {% endfor %}
+{% endblock %}
